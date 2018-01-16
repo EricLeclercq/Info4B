@@ -1,2 +1,2 @@
 # Teaching
-Resources for computer sciences courses (operating systems, middleware, etc.)
+Resources for operating system courses. Program examples in Java, C and Scala.
