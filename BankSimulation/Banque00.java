@@ -30,9 +30,9 @@ public class Banque00{
 
 public static void main(String[] arg){
 
-  Compte c = new Compte(700000);
-  Distributeur d1=new Distributeur(c,10,10000);
-  Distributeur d2=new Distributeur(c,50,10000);
+  Compte c = new Compte(800000);
+  Distributeur d1=new Distributeur(c,10,1000);
+  Distributeur d2=new Distributeur(c,50,1000);
 
   d1.start();
   d2.start();

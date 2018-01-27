@@ -2,7 +2,7 @@ Banque00.java : exemple mettant en évidence le problème d'accès concurrent à
 
 Banque01.java : mise en évidence de la section critique, encadrement par un moniteur
 
-Banque02.java : utilisation d'un verrou au lieu d'un moniteur (attention le verrou est unique et protège la ressource) => le code nécessite une modification des méthodes et passage du verrou en paramètre => effets de bors non souhaités => le ressource doit se protéger elle même des accès concurrent et ne pas déléguer cette tâche aux thread l'utilisant => reconvevoir le code 
+Banque02.java : utilisation d'un verrou au lieu d'un moniteur (attention le verrou est unique et protège la ressource) => le code nécessite de rendre public le verrou => effets de bords non souhaités => le ressource doit se protéger elle même des accès concurrent et ne pas déléguer cette tâche aux thread l'utilisant => reconcevoir le code 
 
 Banque03.java : on remonte de la seciton critique dans la ressource, la ressource se protège elle même avec un verrou privé
 
