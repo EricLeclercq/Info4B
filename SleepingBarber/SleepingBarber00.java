@@ -122,6 +122,7 @@ public class SleepingBarber00{
   // on lance lethread barber
   Barber b=new Barber(laSalleAttente);
   b.start();
+ 
 
   // on lance la simulation de l'arrivee des clients
   SimulArriveeClient simul = new SimulArriveeClient(laSalleAttente,20);
@@ -136,6 +137,7 @@ public class SleepingBarber00{
    try{Thread.sleep(4000);} catch(InterruptedException e){e.printStackTrace();}  
   }
   b.arreter();
+
  }
 }
 
