@@ -7,3 +7,5 @@
 **Banque03.java :** on remonte de la seciton critique dans la ressource, la ressource se protège elle même avec un verrou privé
 
 **Banque04.java :** meme version avec un moniteur sur la méthode de retrait
+
+Pour exécuter plusieurs fois le programme, depuis le shell bash :  for i in `seq 1 100` ;  do java Banque01 ; done
