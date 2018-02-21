@@ -8,4 +8,4 @@
 
 **Banque04.java :** meme version avec un moniteur sur la méthode de retrait
 
-Pour exécuter plusieurs fois le programme, depuis le shell bash :  `for i in `seq 1 100` ;  do java Banque01 ; done`
+Pour exécuter plusieurs fois le programme, depuis le shell bash :  `for i in ``seq 1 100`` ;  do java Banque01 ; done`
