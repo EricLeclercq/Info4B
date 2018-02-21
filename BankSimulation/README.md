@@ -6,10 +6,10 @@
 
 **Banque03.java :** on remonte la section critique dans la ressource, la ressource se protège elle même avec un verrou privé, notez au passage l'encapsulation améliorée
 
-**Banque04.java :** même version avec un moniteur sur la méthode de retrait
+**`Banque04.java` :** même version avec un moniteur sur la méthode de retrait
 
 Pour exécuter plusieurs fois le programme, depuis le shell bash :  
 ```{r, engine='bash', count_lines}
 for i in `seq 1 100` ;  do java Banque01 ; done
 ```
-** Remarque :** la version `Banque03.java` sera réutilisée pour tester vos propres mécanismes d'exclusion mutelle (verrou et sémaphores passifs et actif, algorithme de Peterson, etc.)
+**Remarque :** la version `Banque03.java` sera réutilisée pour tester vos propres mécanismes d'exclusion mutelle (verrou et sémaphores passifs et actif, algorithme de Peterson, etc.)
