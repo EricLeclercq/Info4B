@@ -3,5 +3,7 @@ Cours de thread.
 - le classement est une ressource partagée dont les méthodes qui modifient son état sont contrôlées par un moniteur (synchronized)
 
 Pour avoir l'intégralité de l'affichage, rediriger la sortie vers un fichier :
- `java ThreadRace > trace.txt
- more trace.txt`
+ ```
+ java ThreadRace > trace.txt
+ more trace.txt
+ ```
