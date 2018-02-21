@@ -1,1 +1,1 @@
-Exemple d'autres modèles de processus : les acteurs en Scala
+Un exemple d'un autre modèle de processus : les **acteurs en Scala**
