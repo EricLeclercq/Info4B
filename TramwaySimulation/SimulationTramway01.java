@@ -1,23 +1,12 @@
-// coeur du programme pour le déplacement des rames sur une ligne 
-// composee de troncons
-// pas de gestion de concurrence
+import java.util.concurrent.Semaphore;
 
-// classes identifiées :
-// Ressource : 
-// - la ligne (ressource composite)
-// - les troncons partagés par n rames 
-// inutile de modéliser les stations
-// le troncon tc etant partagé il y aura forcement des problèmes de concurrence
-// Threads : les rammes
-
-
-public class SimulationTramway00{
+public class SimulationTramway01{
  public static void main(String[] args){
  	Ligne l=new Ligne(6);
         // au total 6 troncons pour coder aller et retour
         // t1,tc,t2,t3,tc,t4,t1,tc,t2,t3,tc,t4,...
 	l.addTroncon(new Troncon("t1"));
-        Troncon tc=new Troncon("tc");
+        Troncon tc=new TronconCommun("tc");
         l.addTroncon(tc);
 	l.addTroncon(new Troncon("t2"));
  	l.addTroncon(new Troncon("t3"));
@@ -26,9 +15,9 @@ public class SimulationTramway00{
  	
  	// on positione la rame 1 sur le troncon 1, etc.
  	Rame r1=new Rame(0,l);
- 	//Rame r2=new Rame(2,l);
+ 	Rame r2=new Rame(0,l);
  	r1.start();
- 	//r2.start();
+ 	r2.start();
  }
 }
 
@@ -51,14 +40,32 @@ class Ligne{
 	}
 
 class Troncon{
-	private String nom; 
+	protected String nom; 
 	// private Troncon suivant;
 	public Troncon(String nom){this.nom=nom;}
 	public String toString(){
 	 	return this.nom;
 	}
 }
-	
+
+class TronconCommun extends Troncon{
+ 	private Semaphore s;
+ 	public TronconCommun(String nom){
+ 		super(nom);
+		s=new Semaphore(1);
+	}
+	public void demandeEntree(){
+		System.out.println("Demande entree tc "+Thread.currentThread());
+		try{
+			s.acquire();
+		}catch(InterruptedException e){e.printStackTrace();}
+		System.out.println("Entree tc OK "+Thread.currentThread());
+	}
+	public void sortie(){
+		s.release();
+		System.out.println("Sortie tc OK "+Thread.currentThread());
+	}
+}	
 
 class Rame extends Thread{
 	private int indiceTronconCourant;
@@ -72,12 +79,20 @@ class Rame extends Thread{
 	public void run(){
 		int j=0;
                 
-		while(j<=60){
+		while(j<=31){
 			tronconCourant=l.getTroncon(indiceTronconCourant);
 			System.out.println(indiceTronconCourant+"\t"+tronconCourant+"\t"+Thread.currentThread());
 			try{
 				Thread.sleep((int)(Math.random()*10));
 			}catch(InterruptedException e){e.printStackTrace();}
+			if(tronconCourant.toString().equals("t1")||tronconCourant.toString().equals("t3")) {
+				Troncon tsuivant;
+				tsuivant=l.getTroncon(indiceTronconCourant+1);
+				((TronconCommun)tsuivant).demandeEntree();
+			}
+			if(tronconCourant.toString().equals("tc")){
+				((TronconCommun)tronconCourant).sortie();
+			}
                         indiceTronconCourant++;
 			indiceTronconCourant=indiceTronconCourant % 6;
 			j++;
