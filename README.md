@@ -1,4 +1,4 @@
-# Teaching Operating Systems Concepts
+# Operating Systems Concepts
 Resources for operating system courses. Program examples in Java, C and Scala.
 
 ----
