@@ -1,6 +1,6 @@
 import java.io.*;
 import java.net.*;
-
+/* Version multiclients */
 public class ServeurMC {
    static final int port = 8080;
    static final int maxClients=50;
