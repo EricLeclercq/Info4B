@@ -1,21 +1,22 @@
 import java.io.*;
 import java.net.*;
-/* Version multiclients */
+
 public class ServeurMC {
    static final int port = 8080;
    static final int maxClients=50;
    static PrintWriter pw[];
-   
+   static int numClient=0;
    public static void main(String[] args) throws Exception {
-        int numClient=0;
+       
 	pw=new PrintWriter[maxClients];
 	ServerSocket s = new ServerSocket(port);
-	System.out.println("SOCKET ECOUTE => "+s);
+	System.out.println("SOCKET ECOUTE CREE => "+s);
         while (numClient<maxClients){
  	 Socket soc = s.accept();
          ConnexionClient cc=new ConnexionClient(numClient,soc);
 	 System.out.println("NOUVELLE CONNEXION - SOCKET =>"+soc);
          numClient++;
+         cc.start();
 	}
    }
   
@@ -33,9 +34,7 @@ class ConnexionClient extends Thread{
     this.s=s;
     // BufferedReader permet de lire par ligne
     try{
-    sisr = new BufferedReader(
-                               new InputStreamReader(s.getInputStream())
-                              );
+    sisr = new BufferedReader(new InputStreamReader(s.getInputStream()));
     // Un PrintWriter possede toutes les operations print classiques.
     // En mode auto-flush, le tampon est vide (flush) a l'appel de println.
     sisw = new PrintWriter( new BufferedWriter(
@@ -47,10 +46,13 @@ class ConnexionClient extends Thread{
   public void run(){
      try{
      while (true) {
-           String str = sisr.readLine();          // lecture du message
+           String str = sisr.readLine();          		// lecture du message
            if (str.equals("END")) break;
-           System.out.println("ECHO = " + str);   // trace locale
-           ServeurMC.pw[id].println(str);         // renvoi d'un echo
+           System.out.println("recu de "+id+ "=> " + str);   	// trace locale
+           // on envoi a tous
+           for(int i=0; i<ServeurMC.numClient; i++){
+             if (ServeurMC.pw[i]!=null || i!=id)
+              ServeurMC.pw[i].println(str); }        		// envoi à tous
         }
         sisr.close();
         sisw.close();
