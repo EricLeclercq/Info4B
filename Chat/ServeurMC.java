@@ -2,12 +2,12 @@ import java.io.*;
 import java.net.*;
 
 public class ServeurMC {
-   static final int port = 8080;
+   static int port = 8080;
    static final int maxClients=50;
    static PrintWriter pw[];
    static int numClient=0;
    public static void main(String[] args) throws Exception {
-       
+        if (args[0]!=null) port=Integer.parseInt(args[0]);
 	pw=new PrintWriter[maxClients];
 	ServerSocket s = new ServerSocket(port);
 	System.out.println("SOCKET ECOUTE CREE => "+s);
