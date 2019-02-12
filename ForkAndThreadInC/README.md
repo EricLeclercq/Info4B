@@ -18,3 +18,5 @@ Partie Fork en C :
 `fork03.c` : création  de processus en boucle sans test de la valeur de retour
 
 Partie Thread en C :
+
+`lst3.c` : à compiler avec `gcc -o lst3 lst3.c -lpthread`
