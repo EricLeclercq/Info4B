@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <pthread.h>
 
 void *my_thread_process (void * arg)
@@ -13,7 +14,7 @@ void *my_thread_process (void * arg)
   pthread_exit (0);
 }
 
-main (int ac, char **av)
+int main (int ac, char **av)
 {
   pthread_t th1, th2;
   void *ret;
