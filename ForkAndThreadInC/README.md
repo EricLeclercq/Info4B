@@ -20,3 +20,5 @@ Partie Fork en C :
 Partie Thread en C :
 
 `lst3.c` : à compiler avec `gcc -o lst3 lst3.c -lpthread`
+
+`lst4.c` : utilisation des sémaphores pour synchroniser les threads
