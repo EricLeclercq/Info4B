@@ -1,2 +1,2 @@
-Ce répertoire contient les exemple de code du cours magitral.
+Ce répertoire contient les exemples de codes du cours magitral.
 
