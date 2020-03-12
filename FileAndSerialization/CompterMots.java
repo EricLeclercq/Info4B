@@ -7,7 +7,7 @@ import java.util.*;
 class CompterMots{
 public static void main(String[] arg) throws IOException{
 	
-	Hashtable tableH = new Hashtable();
+	Hashtable<String,Integer> tableH = new Hashtable<String,Integer>();
 	String ligne, mot;
 	StringTokenizer st;
 	
@@ -24,10 +24,8 @@ public static void main(String[] arg) throws IOException{
 			else {
 				Integer i=(Integer) o;
 				tableH.put(mot, new Integer(i.intValue()+1));
-				//System.out.println(i.intValue()+1);
-            //System.out.println(mot+"=>"+((Integer)tableH.get(mot)).intValue());
 			} 
-			}
+		 }
 		}
 	fichier.close();
 	Enumeration listeMots=tableH.keys();
