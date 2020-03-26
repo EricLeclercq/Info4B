@@ -6,7 +6,7 @@ Exemples développés en cours magitraux, travaux dirigés et travaux pratiques 
 - Thread et priorités
 - Course de Threads
 - SleepingBarber
-- [Socket UDP serveur et client](TimeServerUDP)
+- [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
 
 Attention : les exemples ne sont pas des corrections d'exercices, il s'agit de supports pédagogiques qui s'inscrivent dans une progression visant à permettre aux étudiants de :
  - de caractériser les problèmes de concurrence d'accès aux ressources partagées
