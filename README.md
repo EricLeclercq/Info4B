@@ -8,6 +8,7 @@ Exemples développés en cours magitraux, travaux dirigés et travaux pratiques,
 - [Calcul répartis de nombres premiers](PrimeNmbers) : comment équilibrer la charge d'une tâche sur plusieurs threads
 - [Simulatation distributeurs et banque](BankSimulation) : gestion de la concurrence
 - [Sleeping Barber](SleepingBarber) : gestion de la concurrence, synchronisation
+- [Tramway](TramwaySimulation) : accès à une ressource partagée et synchronisation
 - [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
 
 Attention : les exemples ne sont pas des corrections d'exercices, il s'agit de supports pédagogiques qui s'inscrivent dans une progression visant à permettre aux étudiants de :
