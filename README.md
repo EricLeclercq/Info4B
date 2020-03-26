@@ -5,6 +5,7 @@ Resources for operating system courses. Program examples in Java, C and Scala.
 Exemples développés en cours magitraux, travaux dirigés et travaux pratiques :
 - Thread et priorités
 - Course de Threads
+- [Simulatation distributeurs et banque](BankSimulation) : gestion de la concurrence
 - [Sleeping Barber](SleepingBarber) : gestion de la concurrence, synchronisation
 - [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
 
