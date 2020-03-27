@@ -6,8 +6,9 @@ Exemples développés en cours magitraux, travaux dirigés et travaux pratiques,
 - [Course de Threads](ThreadRace) : création de thread, lancement, arrêt
 - Thread et priorités
 - [Calcul répartis de nombres premiers](PrimeNmbers) : comment équilibrer la charge d'une tâche sur plusieurs threads
-- [Simulatation distributeurs et banque](BankSimulation) : gestion de la concurrence
+- [Simulation distributeurs et banque](BankSimulation) : gestion de la concurrence
 - [Sleeping Barber](SleepingBarber) : gestion de la concurrence, synchronisation
+- [Simulation de Parking](ParkingSimulation) : gestion de la concurrence et ressource composite
 - [Tramway](TramwaySimulation) : accès à une ressource partagée et synchronisation
 - [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
 
