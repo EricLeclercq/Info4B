@@ -2,7 +2,15 @@
 Resources for operating system courses. Program examples in Java, C and Scala.
 
 ----
-Exemples développés en cours magitraux, travaux dirigés et travaux pratiques, pour chauque exercice vous avez la notion abordée :
+
+Exemples utilisés ou cours magistral ou pour illustrer une notion du cours :
+- Processus en C
+- Threads avec Python
+- Acteurs en Scala
+- Algorithmes de synchronisation sans recours aux primitives : Dijkstra, Dekker, Peterson
+
+
+Exemples développés, travaux dirigés et travaux pratiques, pour chaque exercice vous avez la notion abordée :
 - [Course de Threads](ThreadRace) : création de thread, lancement, arrêt
 - Thread et priorités
 - [Calcul répartis de nombres premiers](PrimeNmbers) : comment équilibrer la charge d'une tâche sur plusieurs threads
@@ -10,6 +18,8 @@ Exemples développés en cours magitraux, travaux dirigés et travaux pratiques,
 - [Sleeping Barber](SleepingBarber) : gestion de la concurrence, synchronisation
 - [Simulation de Parking](ParkingSimulation) : gestion de la concurrence et ressource composite
 - [Tramway](TramwaySimulation) : accès à une ressource partagée et synchronisation
+- Serialisation : stockage d'objets dans un fichier, exemple de l'annuaire
+- Socket TCP : réalisation d'un chat mono et multi clients
 - [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
 
 Attention : les exemples ne sont pas des corrections d'exercices, il s'agit de supports pédagogiques qui s'inscrivent dans une progression visant à permettre aux étudiants de :
