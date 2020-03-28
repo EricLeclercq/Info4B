@@ -19,7 +19,7 @@ public class SimpleWebServer02 {
        fichierCourant = new FileReader(args[1]);
        BufferedReader br = new BufferedReader(fichierCourant);
        // on fixe le type des données pour le décodage par le client
-       if (args[0].endsWith(".html") || args[0].endsWith(".htm"))
+       if (args[1].endsWith(".html") || args[1].endsWith(".htm"))
         typeDesDonnees = "text/html";
       else
         typeDesDonnees = "text/plain";
