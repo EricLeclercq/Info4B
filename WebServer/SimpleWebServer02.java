@@ -27,6 +27,7 @@ public class SimpleWebServer02 {
         while ((ligneCourante = br.readLine()) != null){
           donneesDuFichier += ligneCourante + "\n";
         }
+        longueurDonnees=donneesDuFichier.length();
       }
       catch(IOException e){e.printStackTrace(); System.exit(1);}
 
@@ -35,15 +36,15 @@ public class SimpleWebServer02 {
      while (true) {
 	     Socket connexionClient = listener.accept () ;
        System.out.println ("Connection from " + connexionClient.getInetAddress().getHostName()+"\n"+connexionClient);
-       EnvoieFichier envoyerLeFichier = new EnvoieFichier(connexionClient);
+       ExpediteurFichier envoyerLeFichier = new ExpediteurFichier(connexionClient);
        envoyerLeFichier.start();
       }
 	 }
  }
 
- class EnvoieFichier extends Thread{
+ class ExpediteurFichier extends Thread{
    Socket connexionClient;
-   public EnvoieFichier(Socket connexionClient){
+   public ExpediteurFichier(Socket connexionClient){
      this.connexionClient=connexionClient;
    }
 
@@ -62,14 +63,18 @@ public class SimpleWebServer02 {
           System.out.println(ligne);
           if (ligne.trim().equals("")) break;
         }
-      // on envoie le fichier depuis le cache
-      os.print("HTTP/1.0 200 OK \r\n");
-      Date today = new Date();
-      os.print("Date: "+today+"\r\n");
-      // envoi de la signature du serveur
-      os.print("Serveur: SimpleWebServer EL 1.0\r\n");
-      os.print("Content-length:"+SimpleWebServer02.longueurDonnees+"\r\n");
+        // on envoie le fichier depuis le cache
+        os.print("HTTP/1.1 200 OK\r\n");
+        Date today = new Date();
+        os.print("Date: "+today+"\r\n");
+        // envoi de la signature du serveur
+        os.print("Serveur: SimpleWebServer EL 1.0\r\n");
+        os.print("Content-length:"+SimpleWebServer02.longueurDonnees+"\r\n");
+        os.print("Content-type:"+SimpleWebServer02.typeDesDonnees+"\r\n\r\n");
       }
+      System.out.println(SimpleWebServer02.donneesDuFichier);
+      os.println(SimpleWebServer02.donneesDuFichier);
+      connexionClient.close();
     }
     catch(IOException e){e.printStackTrace(); System.exit(1);}
    }
