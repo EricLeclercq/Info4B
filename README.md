@@ -18,9 +18,10 @@ Exemples développés, travaux dirigés et travaux pratiques, pour chaque exerci
 - [Sleeping Barber](SleepingBarber) : gestion de la concurrence, synchronisation
 - [Simulation de Parking](ParkingSimulation) : gestion de la concurrence et ressource composite
 - [Tramway](TramwaySimulation) : accès à une ressource partagée et synchronisation
-- Serialisation : stockage d'objets dans un fichier, exemple de l'annuaire
-- Socket TCP : réalisation d'un chat mono et multi clients
+- [Fichier et sérialisation](FileAndSerialization) : stockage d'objets dans un fichier, exemple de l'annuaire
+- [Socket TCP](Chat) : réalisation d'un chat mono et multi clients
 - [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
+- [Mini serveur web](WebServer) : rassemble beaucoup de notion de programmation réseau 
 
 Attention : les exemples ne sont pas des corrections d'exercices, il s'agit de supports pédagogiques qui s'inscrivent dans une progression visant à permettre aux étudiants de :
  - de caractériser les problèmes de concurrence d'accès aux ressources partagées
