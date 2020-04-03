@@ -7,7 +7,7 @@ import java.util.* ;
 
 class ServeurMultiClient{
   private String nomDuFichier,donneesDuFichier;
-  private File documentRoot;
+  static  File documentRoot;
   private String typeDesDonnees;
   private int longueurDonnees;
   private boolean arret;
@@ -17,6 +17,7 @@ class ServeurMultiClient{
   public ServeurMultiClient(int port, File racine){
     this.port = port;
     this.nomDuFichier = nomDuFichier;
+    documentRoot = racine;
     arret = false;
     //this.chargeCache();
 
@@ -25,7 +26,7 @@ class ServeurMultiClient{
       while (!arret) {
         Socket connexionClient = listener.accept () ;
         System.out.println ("Connection from " + connexionClient.getInetAddress().getHostName()+"\n"+connexionClient);
-        ExpediteurFichier envoyerLeFichier = new ExpediteurFichier(connexionClient,donneesDuFichier,longueurDonnees,typeDesDonnees);
+        ExpediteurFichier envoyerLeFichier = new ExpediteurFichier(connexionClient, donneesDuFichier,longueurDonnees,typeDesDonnees);
         envoyerLeFichier.start();
       }
     }
@@ -82,11 +83,26 @@ class ExpediteurFichier extends Thread{
    private Socket connexionClient;
    private String donneesDuFichier, typeDesDonnees;
    private int longueurDonnees;
+
    public ExpediteurFichier(Socket connexionClient, String donneesDuFichier, int longueurDonnees, String typeDesDonnees){
      this.connexionClient = connexionClient;
      this.donneesDuFichier = donneesDuFichier;
      this.longueurDonnees = longueurDonnees;
      this.typeDesDonnees = typeDesDonnees;
+   }
+
+   private String decodeType(String nom){
+     String type;
+     if (nom.endsWith(".html") || nom.endsWith(".htm"))
+      type = "text/html";
+     else if (nom.endsWith(".txt") || nom.endsWith(".java"))
+      type = "text/plain";
+     else if (nom.endsWith(".gif"))
+      type = "image/gif";
+     else if (nom.endsWith(".jpg") || nom.endsWith(".jpeg"))
+      type = "image/jpeg";
+     else type = "text/plain";
+     return type;
    }
 
    public void run(){
@@ -100,38 +116,58 @@ class ExpediteurFichier extends Thread{
       BufferedReader is = new BufferedReader(new InputStreamReader(connexionClient.getInputStream()));
       String requete = is.readLine();
 
+      System.out.println(requete);
+
       StringTokenizer st = new StringTokenizer(requete);
       commande = st.nextToken();
       if (commande.equals("GET")){
         parametreCommande = st.nextToken();
         if (parametreCommande.endsWith("/"))
          parametreCommande += ServeurMultiClient.fichierIndex;
-        //typeMime = decodeType(parametreCommande);
+        typeDesDonnees = decodeType(parametreCommande);
         if (st.hasMoreTokens())
          versionProtocole = st.nextToken();
+         System.out.println("decode commande :"+commande + " " + parametreCommande + " " + versionProtocole
+         + " "+ typeDesDonnees);
+         // on passe les éléments inutiles
+         while ((commande = is.readLine()) != null){
+          //System.out.println(ligne);
+          if (commande.trim().equals("")) break;
+         }
+        executeGet(parametreCommande, typeDesDonnees, os);
       }
-      System.out.println("decode commande :"+commande + " " + parametreCommande + " " + versionProtocole);
-
-      System.out.println(requete);
-      // on regarde si le client envoie une requete HTTP
-      if (requete.indexOf("HTTP/")!=-1){
-        // on passe le reste
-        while (true){
-          String ligne = is.readLine();
-          System.out.println(ligne);
-          if (ligne.trim().equals("")) break;
-        }
-        // on envoie le fichier depuis le cache
-        os.print("HTTP/1.1 200 OK\r\n");
+      else
+      {
+        os.print("HTTP/1.1 501 Not Implemented\r\n");
         Date today = new Date();
         os.print("Date: "+today+"\r\n");
         // envoi de la signature du serveur
         os.print("Serveur: SimpleWebServer EL 1.0\r\n");
-        os.print("Content-length:"+longueurDonnees+"\r\n");
         os.print("Content-type:"+typeDesDonnees+"\r\n\r\n");
       }
-      System.out.println(donneesDuFichier);
-      os.println(donneesDuFichier);
+    }
+    catch(IOException e){e.printStackTrace(); System.exit(1);}
+   }
+
+ void executeGet(String fichier, String typeDesDonnees, PrintStream os){
+    try{
+     System.out.println(ServeurMultiClient.documentRoot + "fichier=" + fichier.substring(1,fichier.length()));
+     File fichierCourant = new File(ServeurMultiClient.documentRoot,fichier.substring(1,fichier.length()));
+     FileInputStream fis = new FileInputStream(fichierCourant);
+     byte[] donneesDuFichier = new byte[(int)fichierCourant.length()];
+     fis.read(donneesDuFichier);
+     fis.close();
+
+      os.print("HTTP/1.1 200 OK\r\n");
+      Date today = new Date();
+      os.print("Date: " + today + "\r\n");
+      // envoi de la signature du serveur
+      os.print("Serveur: SimpleWebServer EL 1.0\r\n");
+      os.print("Content-length:" + donneesDuFichier.length + "\r\n");
+      os.print("Content-type:" + typeDesDonnees + "\r\n\r\n");
+
+      //System.out.println(donneesDuFichier);
+      os.write(donneesDuFichier, 0, donneesDuFichier.length);
       connexionClient.close();
     }
     catch(IOException e){e.printStackTrace(); System.exit(1);}
