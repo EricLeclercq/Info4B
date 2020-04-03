@@ -3,3 +3,4 @@ On développe un exemple de serveur Web fonctionnel qui accepte un navigateur co
 - ```SimpleWebServer01.java``` : multi-clients avec début de décodage de l'en-tête envoyée par le client
 - ```SimpleWebServer02.java``` : avec en plus l'envoi du fichier passé en paramètre
 - ```SimpleWebServer03.java``` : version 3 réachitecturée
+- ```SimpleWebServer04.java``` : version fonctionnelle
