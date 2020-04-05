@@ -4,8 +4,8 @@ On développe un exemple de serveur Web fonctionnel qui accepte un navigateur co
 - ```SimpleWebServer02.java``` : avec en plus l'envoi du fichier passé en paramètre
 - ```SimpleWebServer03.java``` : version 3 réachitecturée
 - ```SimpleWebServer04.java``` : version fonctionnelle
-- ```SimpleWebServer04bis.java``` : version fonctionnelle simplifiée avec singleton
-- ```SimpleWebServer05.java``` : thread avec équilibrage de charge
+- ```SimpleWebServer04bis.java``` : version fonctionnelle simplifiée avec le pattern singleton
+- ```SimpleWebServer05.java``` : threads avec équilibrage de charge
 - ```SimpleWebServerCache.java``` : version avec cache 
 
 
