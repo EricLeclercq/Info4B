@@ -21,7 +21,7 @@ Exemples développés, travaux dirigés et travaux pratiques, pour chaque exerci
 - [Fichier et sérialisation](FileAndSerialization) : stockage d'objets dans un fichier, exemple de l'annuaire
 - [Socket TCP](Chat) : réalisation d'un chat mono et multi clients
 - [Socket UDP serveur et client](TimeServerUDP) : exemple de serveur de temps
-- [Mini serveur web](WebServer) : rassemble beaucoup de notion de programmation réseau 
+- [Mini serveur web](WebServer) : rassemble beaucoup de notions de programmation réseau et synthétise les notions de SE vues en cours
 
 Attention : les exemples ne sont pas des corrections d'exercices, il s'agit de supports pédagogiques qui s'inscrivent dans une progression visant à permettre aux étudiants de :
  - de caractériser les problèmes de concurrence d'accès aux ressources partagées
