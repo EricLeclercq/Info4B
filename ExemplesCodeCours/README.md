@@ -1,4 +1,4 @@
-Ce répertoire contient les exemples de codes du cours magitral :
+Ce répertoire contient les exemples de codes du cours magitral et quelques exemple particuliers de TD :
  - `cputest.c` : exemple de programme C avec une pause 
    - pour le compiler ```gcc -o cputest cputest.c```
    - pour le tester, lancer plusieurs processus en même temps ```./cputest A & ./cputest B```
