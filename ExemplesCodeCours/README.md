@@ -7,5 +7,6 @@ Ce répertoire contient les exemples de codes du cours magitral :
  - `thread.py` : exemple de création de thread en Python à comparer avec les exemple du cours pour Java
  - `CriticalSectionTest.java` contient les algorithmes de Dijkstra, Dekker, Peterson - à tester avec l'exemple de la simulation de la banque et des distributeurs
  - `tube.c` : exemple de création d'un tube entre deux processus
+ - `TestCompteur1*.java` ces trois programmes illustrent l'utilisation du volatile et l'influence de la commutation de contexte engendrée par les IO (system call)
  
 
